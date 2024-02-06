@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-around;
     padding: 16px;
-    box-shadow: 0 1px 3px -2px #000;
+    background: #191919;
+    box-shadow: 0 1px 3px -2px #fff;
 }
 
 .nav-logo {
@@ -12,7 +13,7 @@
 }
 
 .nav-logo p {
-    color: #171717;
+    color: #fafafa;
     font-size: 38px;
     font-weight: 600;
 }
@@ -28,20 +29,32 @@
 }
 
 .nav-menu li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    cursor: pointer;
+  color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  cursor: pointer;
 }
 
 .nav-menu hr {
     border: none;
-    width: 80%;
-    height: 3px;
+    width: 90%;
+    height: 5px;
     border-radius: 10px;
-    background: #ff4141;
+    background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
 }
 
 .nav-login {
