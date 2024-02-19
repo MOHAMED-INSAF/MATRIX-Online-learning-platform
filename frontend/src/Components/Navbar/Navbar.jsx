@@ -1,28 +1,40 @@
 import React, { useState } from 'react'
-import './Navbar.css'
-import logo from '../Assets/logo.png'
-import cart_icon from '../Assets/cart_icon.png'
+import './Navbar.css' // Import CSS file
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
 
     const [menu,setMenu] = useState("home");
 
+    const toggleMenuOpen = () => setMenu(menu === 'open' ? 'closed' : 'open');
+
   return (
-    <div className='navbar'>
-        <div className="nav-logo">
-            <img src={logo} alt="" />
-            <p>MATRIX</p>
-        </div>
-        <ul className="nav-menu">
-            <li onClick={() => {setMenu("home")}}><Link style={{ textDecoration: 'none' }} to='/'>Home</Link>{menu==="home"?<hr/>:<></>}</li>
-            <li onClick={() => {setMenu("community")}}><Link style={{ textDecoration: 'none' }} to='/community'>Community</Link>{menu==="community"?<hr/>:<></>}</li>
-            <li onClick={() => {setMenu("study")}}><Link style={{ textDecoration: 'none' }} to='/study'>Study</Link>{menu==="study"?<hr/>:<></>}</li>
-            <li onClick={() => {setMenu("store")}}><Link to='/store'><img src={cart_icon} alt="" /></Link>{menu==="store"?<hr/>:<></>}</li>
-        </ul>
-        <div className="nav-login">
-            <Link to='/loginsignup'><button>Login</button></Link>
-        </div>
+    <div className={`navbar ${menu}`}>
+        <div className="navbar-overlay" onClick={toggleMenuOpen}></div>
+        <button type="button" className="navbar-burger" onClick={toggleMenuOpen}>
+            <span className="material-icons">menu</span>
+        </button>
+        <h1 className={menu==="home" ? "active" : ""} onClick={() => setMenu("home")}>
+            <Link to='/' className="link-style">MATRIX</Link>
+        </h1>
+
+        <nav className="navbar-menu">
+            
+            <button className={menu==="community" ? "active" : ""} onClick={() => setMenu("community")}>
+                <Link to='/community' className="link-style">Community</Link>
+            </button>
+            <button className={menu==="study" ? "active" : ""} onClick={() => setMenu("study")}>
+                <Link to='/study' className="link-style">Study</Link>
+            </button>
+            <button className={menu==="store" ? "active" : ""} onClick={() => setMenu("store")}>
+                <Link to='/store' className="link-style">Store</Link>
+            </button>
+            <div className="nav-login">
+                <Link to='/loginsignup' className="login-style"><button>Login</button></Link>
+            </div>
+        </nav>
+
+        
     </div>
   )
 }

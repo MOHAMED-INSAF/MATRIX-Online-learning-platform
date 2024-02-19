@@ -1,145 +1,139 @@
-.navbar {
-    display: flex;
-    justify-content: space-around;
-    padding: 16px;
-    background: #191919;
-    box-shadow: 0 1px 3px -2px #fff;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:');
+
+
+*{
+    box-sizing: border-box;
 }
 
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+body{
+    background: #3b3d43;
 }
 
-.nav-logo p {
-    color: #fafafa;
-    font-size: 38px;
-    font-weight: 600;
-}
-
-.nav-menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 50px;
-    color: #626262;
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.nav-menu li {
-  color: #fafafa;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  cursor: pointer;
-}
-
-.nav-menu hr {
-    border: none;
-    width: 90%;
-    height: 5px;
-    border-radius: 10px;
-    background: linear-gradient(
-      45deg,
-      #ff0000,
-      #ff7300,
-      #fffb00,
-      #48ff00,
-      #00ffd5,
-      #002bff,
-      #7a00ff,
-      #ff00c8,
-      #ff0000
-    );
-}
-
-.nav-login {
-    display: flex;
-    align-items: center;
-    gap: 45px;
-}
-
-/*This is Going to be only for the button 
-https://cssbuttons.app/
-The above link is to get button styles*/
-.nav-login button {
-    padding: 0.6em 2em;
-    border: none;
-    outline: none;
-    color: rgb(255, 255, 255);
-    background: #111;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-    border-radius: 10px;
-}
-
-.nav-login button:before {
-    content: "";
-    background: linear-gradient(
-      45deg,
-      #ff0000,
-      #ff7300,
-      #fffb00,
-      #48ff00,
-      #00ffd5,
-      #002bff,
-      #7a00ff,
-      #ff00c8,
-      #ff0000
-    );
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(5px);
-    width: calc(100% + 4px);
-    height: calc(100% + 4px);
-    animation: glowingbn5 20s linear infinite;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 10px;
-  }
-
-  @keyframes glowingnav-loginbutton {
-    0% {
-      background-position: 0 0;
-    }
-    50% {
-      background-position: 400% 0;
-    }
-    100% {
-      background-position: 0 0;
-    }
-  }
-
-  .nav-login button:active {
-    color: #000;
-  }
-  
-  .nav-login button:active:after {
+button{
+    border: 0;
+    padding: 0;
+    font-family: inherit;
     background: transparent;
-  }
-  
-  .nav-login button:hover:before {
-    opacity: 1;
-  }
-  
-  .nav-login button:after {
-    z-index: -1;
-    content: "";
-    position: absolute;
+    color: inherit;
+    cursor: pointer;
+}
+
+.navbar{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 64px;
+    background: #19191c;
+    color: #f9f9f9;
+    font-family: 'Poppins';
+}
+
+.navbar-overlay{
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: #191919;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-  }
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
 
-/*End of the Css for the button*/
+body.open .navbar-overlay{
+    visibility: visible;
+    opacity: 1;
+}
+
+.navbar-burger{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+}
+
+
+.navbar-menu{
+    position: absolute;
+    z-index: 3;
+    top: 0px;
+    right: 10px;
+    translate: -100% 0;
+    width: 270px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #000;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+body.open .navbar-menu{
+    translate: 0 0;
+    visibility: visible;
+}
+
+.navbar-menu > button{
+    color: rgba(255,255,255,0.5);
+    background: transparent;
+    padding: 0 8px;
+    transition: all 0.3s;
+}
+
+.navbar-menu > button.active{
+    color: inherit;
+}
+
+.navbar-menu > button.active:hover{
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.link-style {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.login-style {
+    color: #707070;
+    text-decoration: none;
+    padding: 25px;
+}
+
+@media only screen and (min-width: 600px){
+  .navbar{
+      justify-content: space-between;
+      padding: 0 0 0 16px;
+  }
+  .navbar-overlay{
+      display: none;
+  }
+  .navbar-burger{
+      display: none;
+  }
+  .navbar-menu{
+      position: absolute; /* Change from static */
+      translate: 0 0;
+      width: auto;
+      background: transparent;
+      flex-direction: row;
+      visibility: visible;
+  }
+  body.closed .navbar-menu {
+      visibility: hidden;
+  }
+}
