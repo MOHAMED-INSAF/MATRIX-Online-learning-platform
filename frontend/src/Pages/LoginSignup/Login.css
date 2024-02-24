@@ -1,25 +1,26 @@
 
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
     min-height: 100vh;
-    place-items: center;
-    min-width: 320px;
-    background: url('./Assets/background.avif')
-    no-repeat;
-    background-size: cover;
-    background-position: center;
+    /* place-items: center; */
+    /* min-width: 320px; */
+    background: linear-gradient(145deg, #665b5b, #292c37);
+    /* no-repeat; */
+    /* background-size: cover; */
+    /* background-position: center; */
     font-family: "Poppins", sans-serif;
     line-height: 1.5;
     font-weight: 400;
+    overflow: hidden;
     
 }
 
 .wrapper {
-    
-    width: 340px;
-    height: 610px;
+
+    width: 400px;
+    height: auto;
     background: rgba(109, 107, 107, 0.508);
     border: 2px solid rgba(255,255,255, .2);
     backdrop-filter: blur(15px);
@@ -29,8 +30,14 @@ body{
     padding: 30px 40px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 25px;
+    margin-top: 95px;
     margin-bottom: 20px;
+    }
+
+    .text {
+        background: linear-gradient(130deg, #959496 40%, #706b6c 60%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .wrapper h1 {
@@ -50,7 +57,7 @@ body{
     }
     
     .input-box input {
-        width: 85%;
+        width: 106%;
         height: 100%;
         background: transparent;
         border: none;

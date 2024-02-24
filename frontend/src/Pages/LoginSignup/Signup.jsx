@@ -41,11 +41,11 @@ const Signup = ({ onLoginClick }) => {
         <GiPadlock className="icon" />
       </div>
       <div>
-        <button type="button" className="submit" onClick={handleSignup}>
+        <button type="button" className="submit gray" onClick={handleSignup}>
           Sign up
         </button>
         <Divider />
-        <button type="button" className="submit gray" onClick={onLoginClick}>
+        <button type="button" className="submit" onClick={onLoginClick}>
           Log in
         </button>
       </div>

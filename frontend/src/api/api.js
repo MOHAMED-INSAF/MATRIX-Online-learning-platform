@@ -19,9 +19,9 @@ const api = {
     }
   },
 
-  login: async (username, password) => {
+  login: async (email, password) => {
     try {
-      const response = await axiosInstance.post("/login", { username, password });
+      const response = await axiosInstance.post("/api/auth/login", { email, password });
       return response.data;
     } catch (error) {
       throw error;
