@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import cart from './5.svg'
 import './Store.css';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
