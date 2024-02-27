@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import cart from './5.svg'
 import './Store.css';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
@@ -16,10 +17,40 @@ const products = [
   { id: 4, name: '1000 points', price: 11.18, image: image4 },
 ];
 
+
 const convertToLKR = (priceInUSD) => {
   const conversionRate = 312.94;
   const priceInLKR = priceInUSD * conversionRate;
   return priceInLKR.toFixed(2);
+};
+
+const Product = ({ product, addToCart, removeFromCart }) => {
+  const isAddedToCart = !!product.cartQuantity;
+
+  return (
+    <div className="product">
+      <img src={product.image} alt={product.name} />
+      <h3>{product.name}</h3>
+      <p>Rs {convertToLKR(product.price)}</p>
+      {!isAddedToCart && <button className="add-to-cart" onClick={() => addToCart(product)}>Add to Cart</button>}
+      {isAddedToCart && <button className="remove-from-cart" onClick={() => removeFromCart(product)}>Remove from Cart</button>}
+    </div>
+  );
+};
+
+const Cart = ({ cartItems, total, checkout }) => {
+  return (
+    <div className="cart">
+      <h2>Cart</h2>
+      <ul>
+        {cartItems.map(item => (
+          <li key={item.id}>{item.name} - Rs {item.cartQuantity * convertToLKR(item.price)}</li>
+        ))}
+      </ul>
+      <p>Total: Rs {total}</p>
+      <button className="checkout" onClick={checkout}>Checkout</button>
+    </div>
+  );
 };
 
 const Store = () => {
@@ -31,8 +62,24 @@ const Store = () => {
   };
 
   const addToCart = (product) => {
-    setCartItems([...cartItems, { ...product, price: convertToLKR(product.price) }]);
+    const existingItem = cartItems.find(item => item.id === product.id);
+    if (existingItem) {
+      setCartItems(cartItems.map(item => item.id === product.id ? { ...item, cartQuantity: item.cartQuantity + 1 } : item));
+    } else {
+      setCartItems([...cartItems, { ...product, cartQuantity: 1 }]);
+    }
   };
+
+  const removeFromCart = (product) => {
+    setCartItems(cartItems.filter(item => item.id !== product.id));
+  };
+
+  const checkout = () => {
+    // Implement the checkout logic here (e.g., redirect to a checkout page)
+    console.log('Checkout');
+  };
+
+  const total = cartItems.reduce((sum, item) => sum + (item.price * item.cartQuantity), 0);
 
   return (
     <div className={`App ${cartOpen ? 'dark-mode' : ''}`}>
@@ -42,26 +89,15 @@ const Store = () => {
       </button>
       <div className="products">
         {products.map(product => (
-          <div key={product.id} className="product">
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>Rs {convertToLKR(product.price)}</p>
-            <button className="add-to-cart" onClick={() => addToCart(product)}>Add to Cart</button>
-          </div>
+          <Product key={product.id} product={product} addToCart={addToCart} removeFromCart={removeFromCart} />
         ))}
       </div>
       {cartOpen && (
-        <div className="cart">
-          <h2>Cart</h2>
-          <ul>
-            {cartItems.map(item => (
-              <li key={item.id}>{item.name} - Rs {item.price}</li>
-            ))}
-          </ul>
+        <Cart cartItems={cartItems} total={convertToLKR(total)} checkout={toggleCart}>
           <Elements stripe={stripePromise}>
-            <PaymentForm />
+            <PaymentForm checkout={checkout} />
           </Elements>
-        </div>
+        </Cart>
       )}
     </div>
   );

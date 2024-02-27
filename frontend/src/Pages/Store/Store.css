@@ -1,4 +1,3 @@
-/* Store.css */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -106,4 +105,12 @@ body {
 .App.dark-mode {
   background-color: #222;
   color: #fff;
+}
+
+.payment-form {
+  margin-top: 50px;
+}
+
+.error {
+  color: red;
 }
