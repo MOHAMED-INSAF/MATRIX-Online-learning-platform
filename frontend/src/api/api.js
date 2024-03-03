@@ -15,8 +15,8 @@ const api = {
       console.log('response::', response);
       return response.data;
     } catch (error) {
-      throw error;
-    }
+            throw error;
+          }
   },
 
   login: async (email, password) => {
