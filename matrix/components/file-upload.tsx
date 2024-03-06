@@ -21,5 +21,5 @@ export const FileUpload = ({ onChange, endpoint }: FileUploadProps) => {
         toast.error(`${error?.message}`);
       }}
     />
-  )
-}
+  );
+};
