@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Login.css';
 import { ImProfile } from "react-icons/im"; 
 import { IoMdClose } from "react-icons/io";
-import api from "../../api/api"; 
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 
 const Panel = () => {

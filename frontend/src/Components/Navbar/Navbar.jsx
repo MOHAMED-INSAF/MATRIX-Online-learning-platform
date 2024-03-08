@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Navbar.css'; // Import CSS file
 import { Link, useLocation } from 'react-router-dom';
-import UserProfileDropdown from '../../Pages/LoginSignup/profile';
 import Popup from '../../Pages/LoginSignup/popup';
 import Panel from '../../Pages/LoginSignup/Panel';
 
 const Navbar = () => {
     const [menu, setMenu] = useState("home");
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track login status
     const location = useLocation();
+
+    useEffect(() => {
+        // Check if user is logged in by checking the presence of token in local storage
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
+    }, []);
 
     const toggleMenuOpen = () => setMenu(menu === 'open' ? 'closed' : 'open');
 
@@ -42,16 +48,15 @@ const Navbar = () => {
                     <Link to='/store' className="link-style">Store</Link>
                 </button>
                
-                <div className="nav-login">
-                    <Link to='/loginsignup' className="login-style"><button>Login</button></Link>
-                </div>
-                {/* <UserProfileDropdown />  */}
-                 {/* <Popup /> */}
-                 <Panel />
-                 
+                {/* Conditionally render login button or Panel component based on login status */}
+                {isLoggedIn ? (
+                    <Panel />
+                ) : (
+                    <div className="nav-login">
+                        <Link to='/loginsignup' className="login-style"><button>Login</button></Link>
+                    </div>
+                )}
             </nav>
-            
-
         </div>
     );
 }

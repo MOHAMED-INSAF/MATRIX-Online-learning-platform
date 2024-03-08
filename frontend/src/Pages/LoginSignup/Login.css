@@ -513,8 +513,8 @@ body{
       
       .panel .toggle-button {
         position: fixed;
-        top: 20px;
-        right: 6px;
+        top: 17px;
+        right: -3px;
         background: none;
         border: none;
         padding: 0;
