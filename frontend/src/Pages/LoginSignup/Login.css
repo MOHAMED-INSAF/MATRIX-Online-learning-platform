@@ -121,7 +121,7 @@ body{
     .box {
         position: relative;
     }
-    
+
 
 
     .input-box input:focus + .xy,
@@ -136,6 +136,7 @@ body{
     }
 
     
+
     .box .icon{
         position: fixed;
         right: 70px;
@@ -324,7 +325,6 @@ body{
         color: #2b2b2d;
         padding: 6px 8px;
       }
-
 
 
         /* css for user profile drop down */
@@ -545,3 +545,4 @@ body{
         background-color: #e53935;
       }
     
+
