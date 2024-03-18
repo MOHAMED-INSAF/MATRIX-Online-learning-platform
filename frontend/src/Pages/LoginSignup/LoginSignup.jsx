@@ -21,6 +21,7 @@ const LoginSignup = () => {
         <Signup onLoginClick={() => handleActionChange("Login")} />
       )}
       &nbsp;
+
       {/* <GoogleLoginComponent/> */}
     </div>
   );
