@@ -4,6 +4,8 @@ import { BarChart, Compass, Layout, List } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { SidebarItem } from "./sidebar-item";
+import { IoIosPeople } from "react-icons/io";
+
 
 const guestRoutes = [
   {
@@ -16,6 +18,11 @@ const guestRoutes = [
     label: "Browse",
     href: "/search",
   },
+  {
+    icon: IoIosPeople,
+    label: "Community",
+    href: "/community",
+  }
 ];
 
 const teacherRoutes = [
