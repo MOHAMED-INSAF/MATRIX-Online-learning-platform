@@ -32,12 +32,12 @@ export async function PATCH(
       },
       data: {
         isPublished: false,
-      },
+      }
     });
 
     return NextResponse.json(unpublishedCourse);
   } catch (error) {
     console.log("[COURSE_ID_UNPUBLISH]", error);
     return new NextResponse("Internal Error", { status: 500 });
-  }
+  } 
 }
