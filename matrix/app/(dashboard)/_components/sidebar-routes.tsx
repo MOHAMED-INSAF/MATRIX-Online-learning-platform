@@ -1,10 +1,11 @@
 "use client";
 
-import { BarChart, Compass, Layout, List } from "lucide-react";
+import { BarChart, Compass, Layout, List,  Users } from "lucide-react";
 import { usePathname } from "next/navigation";
 
+
 import { SidebarItem } from "./sidebar-item";
-import { IoIosPeople } from "react-icons/io";
+// import { IoIosPeople } from "react-icons/io";
 
 
 const guestRoutes = [
@@ -19,9 +20,9 @@ const guestRoutes = [
     href: "/search",
   },
   {
-    icon: IoIosPeople,
+    icon:  Users,
     label: "Community",
-    href: "/community",
+    href: "/Community",
   }
 ];
 
@@ -58,3 +59,4 @@ export const SidebarRoutes = () => {
     </div>
   );
 };
+
