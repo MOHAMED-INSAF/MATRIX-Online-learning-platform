@@ -17,11 +17,11 @@ export const NavbarRoutes = () => {
   const isTeacherPage = pathname?.startsWith("/teacher");
   const isCoursePage = pathname?.includes("/courses");
   const isSearchPage = pathname === "/search";
-
+  
   return (
     <>
       {isSearchPage && (
-        <div className="hidden md:block">
+        <div className="hidden md:block ml-auto">
           <SearchInput />
         </div>
       )}
@@ -39,7 +39,7 @@ export const NavbarRoutes = () => {
               Tutor mode
             </Button>
           </Link>
-        ) : null}
+        ) :null}
         <UserButton afterSignOutUrl="/" />
       </div>
     </>
