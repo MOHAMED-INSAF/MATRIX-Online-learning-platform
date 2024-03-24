@@ -11,7 +11,7 @@ const CommunityPage = () => {
       <div className="flex flex-col space-y-6 max-w-md mx-auto">
         <div className="text-secondary">
           <div className="mb-7">
-            <h4 className="font-semibold text-4xl mb-4">Discord community</h4>
+            <h4 className="font-semibold text-4xl text-white mb-4">Discord community</h4>
             <p className="text-neutral-100">Join the Discord community to chat with other members, ask questions, and more.</p>
           </div>
           <a target="_blank" href="https://discord.gg/5hjgQ5JR">

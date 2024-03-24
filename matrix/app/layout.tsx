@@ -22,20 +22,14 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          {/* 
-            Place the ThemeProvider outside of the body tag, wrapping the entire JSX structure.
-            This ensures that ThemeProvider is not nested within unsupported server components.
-          */}
+          
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-            {/* 
-              Include ConfettiProvider, ToastProvider, and children inside ThemeProvider.
-              ThemeProvider should be the immediate parent of ConfettiProvider and ToastProvider.
-            */}
+       
             <ConfettiProvider />
             <ToastProvider />
             {children}
