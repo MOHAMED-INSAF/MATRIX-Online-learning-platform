@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart, Compass, Layout, List, Users } from "lucide-react";
+import { BarChart, Compass, Layout, List, Users, Heart } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { SidebarItem } from "./sidebar-item";
@@ -56,3 +56,13 @@ export const SidebarRoutes = () => {
     </div>
   );
 };
+
+const AboutUsSidebarItem = () => (
+  <SidebarItem
+    icon={Heart}
+    label="About us"
+    href="/aboutus"
+  />
+);
+
+export { AboutUsSidebarItem };
