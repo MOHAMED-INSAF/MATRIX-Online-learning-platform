@@ -19,7 +19,7 @@ const guestRoutes = [
   {
     icon: Users,
     label: "Community",
-    href: "/Community",
+    href: "/community",
   },
 ];
 
